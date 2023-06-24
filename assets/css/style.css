@@ -229,10 +229,11 @@ button:hover, button:focus {
     margin-top: 150px;
     display: flex;
     justify-content: center;
+    align-items: flex-start;
     flex-wrap: wrap;
 }
 .responses-container {
-    max-width: 450px;
+    width: 450px;
 }
 
 h3 {
