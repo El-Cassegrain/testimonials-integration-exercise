@@ -1,0 +1,278 @@
+/* Main style */
+
+/* Small reset */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* prend en compte les marges dans le calcul des dimensions de boites */
+}
+
+/* CSS Variables */
+:root {
+    --text-color: #EBF1FF;
+    --bg-color: #17181A;
+    --yellow: #EAEF52;
+    --pink: rgb(239, 102, 125);
+    --card-bg-color: #202124;
+    --quote-color: #2D2F34;
+    --main-border-radius: 18px;
+    --header-height: 210px;
+}
+
+/* Responsive text old way with media queries and Bootstrap breakpoints */
+html{font-size: 16px}
+@media screen and (min-width: 576px){html{font-size: 103%}}
+@media screen and (min-width: 768px){html{font-size: 106%}}
+@media screen and (min-width: 992px){html{font-size: 109%}}
+@media screen and (min-width: 1200px){html{font-size: 112%}}
+@media screen and (min-width: 1400px){html{font-size: 115%}}
+
+/* Global styles */
+body {
+    font-family: "Open Sans", sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-weight: 400;
+}
+
+section {
+    min-height: 100vh;
+}
+
+section#testimonials-section {
+    min-height: calc(100vh - var(--header-height))
+}
+
+section#quiz-section {
+    background-color: var(--yellow);
+    clip-path: polygon(0 4%, 100% 0, 100% 100%, 0% 100%);
+    color: var(--bg-color);
+}
+
+.scrolled {
+    visibility: hidden;;
+    opacity: 0;
+    transition: ease all 0.12s 0.015s;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    height: var(--header-height);
+}
+
+h1 {
+    display: inline-flex;
+    justify-content: center;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 80px 32px;
+    position: relative;
+
+}
+
+h2 {
+    font-family: "Dancing script", cursive;
+    display: flex;
+    justify-content: center;
+    color: var(--bg-color);
+    padding-top: 100px;
+    font-size: 3.75rem;
+    position: relative;
+}
+
+h2 span {
+    font-size: 1.35rem;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    position: absolute;
+    bottom: -55px;
+}
+
+h1 span#subtitle {
+    font-family: "Dancing Script", cursive;
+    text-transform: capitalize;
+    color: var(--pink);
+    text-shadow: 0 0 10px var(--pink);
+    animation: clignote ease-in-out 0.68s infinite alternate-reverse;
+    display: inline-flex;
+    transform: rotate(-3deg);
+    position: absolute;
+    right: 0;
+    bottom: 68px;
+    font-size: 1.75rem;
+}
+
+@keyframes clignote {
+    to {
+        text-shadow: 0px 0px 0px rgb(239, 72, 99);
+    }
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 35px;
+}
+
+.card {
+    background-color: var(--card-bg-color);
+    margin: 50px 28px;
+    border-radius: var(--main-border-radius);
+    position: relative;
+    max-width: 423px;
+    padding: 0 42px 50px;
+}
+
+img {
+    position: absolute; /* Par rapport au dernier élément parent positionné, sinonpar rapport au body */
+    width: 120px;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+.card-content {
+    padding-top: 82px;
+}
+
+cite {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 12px;
+    opacity: 0.45
+}
+
+cite::before {
+    content: "";
+    display: inline-flex;
+    position: relative;
+    margin-top: 0.7rem;
+    border-bottom: 1px solid var(--text-color);
+    height: 1px;
+    width: 22px;
+    margin-right: 10px;
+    color: var(--text-color);
+    opacity: 0.45;
+}
+
+blockquote {
+    position: relative;
+    z-index: 0; /* In order to place the quote left under the text */
+}
+
+blockquote::before {
+    content: "\f10d"; /* required */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 4.3rem;
+    display: flex;
+    position: absolute;
+    top: -30px;
+    left: -10px;
+    z-index: -1;
+    color: var(--quote-color);
+}
+
+.card-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+i {
+    color: var(--yellow);
+    font-size: 1.5rem;
+    padding-right: 6px;
+}
+
+.cta-container {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    padding: 12px 24px;
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-style: italic;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all ease-in 0.15s 0.009s;
+}
+
+button:hover, button:focus {
+    background-color: var(--pink);
+    border-color: var(--pink);
+}
+
+.scroll-down-container {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 85px;
+    width: 100%;
+    animation: scroll-down cubic-bezier(0.165, 0.84, 0.44, 1) 1s infinite alternate-reverse;
+}
+
+@keyframes scroll-down {
+    to {
+        transform: translateY(12px);
+    }
+}
+
+.content-container {
+    margin-top: 150px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.responses-container {
+    max-width: 450px;
+}
+
+h3 {
+    display: inline-flex;
+    padding: 36px 0;
+}
+
+ul {
+    display: block;
+    margin-left: 18px;
+}
+
+.separator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 250px;
+}
+
+#copyright {
+    font-size: 14px;
+    margin-top: 16px;
+}
+
+#copyright a {
+    color: var(--bg-color);
+}
+
+hr {
+    width: 320px;
+    border-color: var(--bg-color);
+}
+
+@media screen and (max-width: 360px){
+    .scroll-down-container {
+        display: none;
+    }
+}
+@media screen and (max-width: 1436px){
+    .cta-container {
+        margin-bottom: 160px;
+    }
+}
